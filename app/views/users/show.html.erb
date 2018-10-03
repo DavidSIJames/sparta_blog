@@ -23,5 +23,13 @@
     <% end %>
   </p>
 <% end %>
+<p><strong>Comment:</strong></p>
+<% @user.comments.each do |comment|%>
+  <p>
+    <%= link_to edit_blog_comment_path(comment.blog_id,comment.id) do %>
+    <%= comment.body %>
+    <% end %>
+  </p>
+<% end %>
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
