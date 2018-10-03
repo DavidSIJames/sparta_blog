@@ -1,5 +1,6 @@
 <p id="notice"><%= notice %></p>
-
+<%= link_to 'Edit', edit_blog_path(@blog) %> |
+<%= link_to 'Back', blogs_path %>
 <p>
   <strong>User:</strong>
   <%= @blog.user_id %>
@@ -23,9 +24,19 @@
 <p>
   <strong>User:</strong>
   <%= link_to @blog.user do %>
-    <%= @blog.user.first_name %>
+  <%= @blog.user.first_name %>
   <% end %>
 </p>
-
-<%= link_to 'Edit', edit_blog_path(@blog) %> |
-<%= link_to 'Back', blogs_path %>
+<p><strong>Comments:</strong></p>
+<ul>
+  <% @blog.comments.each do |comment| %>
+    <li>
+      <%= link_to edit_blog_comment_path(@blog, comment) do %>
+        <%= comment.body %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
+<p>
+  <%= link_to 'New Comment', new_blog_comment_path(@blog) %>
+</p>
