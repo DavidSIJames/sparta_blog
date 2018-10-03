@@ -20,5 +20,12 @@
   <%= @blog.image %>
 </p>
 
+<p>
+  <strong>User:</strong>
+  <%= link_to @blog.user do %>
+    <%= @blog.user.first_name %>
+  <% end %>
+</p>
+
 <%= link_to 'Edit', edit_blog_path(@blog) %> |
 <%= link_to 'Back', blogs_path %>
