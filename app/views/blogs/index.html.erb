@@ -16,7 +16,11 @@
   <tbody>
     <% @blogs.each do |blog| %>
       <tr>
-        <td><%= blog.user.first_name%></td>
+        <td>
+          <%= link_to user_path(blog.user.id) do %>
+          <%= blog.user.first_name%>
+          <% end %>
+        </td>
         <td><%= blog.title %></td>
         <td><%= blog.body %></td>
         <td><%= blog.image %></td>

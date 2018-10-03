@@ -1,9 +1,12 @@
 <p id="notice"><%= notice %></p>
 <%= link_to 'Edit', edit_blog_path(@blog) %> |
 <%= link_to 'Back', blogs_path %>
+
 <p>
   <strong>User:</strong>
-  <%= @blog.user_id %>
+  <%= link_to @blog.user do %>
+  <%= @blog.user.first_name %>
+  <% end %>
 </p>
 
 <p>
@@ -21,12 +24,7 @@
   <%= @blog.image %>
 </p>
 
-<p>
-  <strong>User:</strong>
-  <%= link_to @blog.user do %>
-  <%= @blog.user.first_name %>
-  <% end %>
-</p>
+
 <p><strong>Comments:</strong></p>
 <ul>
   <% @blog.comments.each do |comment| %>

@@ -14,7 +14,7 @@
   <strong>Dob:</strong>
   <%= @user.dob %>
 </p>
-
+<%= link_to "New Blog" ,new_blog_path %>
 <p> <strong>Blogs:</strong></p>
 <% @user.blogs.each do |user|%>
   <p>
