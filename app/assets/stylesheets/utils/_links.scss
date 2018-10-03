@@ -1,0 +1,17 @@
+body{
+  .container{
+    a{
+      color: #1d24b8;
+      text-shadow: 2px 3px 1px #e0e1e7;
+      &:hover{
+        color: #5a60db;
+      }
+    }
+    table{
+      a{
+        color: #FFF;
+        text-shadow: 2px 3px 1px #000;
+      }
+    }
+  }
+}
