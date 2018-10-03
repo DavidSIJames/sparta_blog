@@ -11,25 +11,29 @@ class CommentsController < ApplicationController
   # GET /comments/1
   # GET /comments/1.json
   def show
+    @blog = Blog.find(params[:blog_id])
   end
 
   # GET /comments/new
   def new
+    @blog = Blog.find(params[:blog_id])
     @comment = Comment.new
   end
 
   # GET /comments/1/edit
   def edit
+    @blog = Blog.find(params[:blog_id])
   end
 
   # POST /comments
   # POST /comments.json
   def create
     @comment = Comment.new(comment_params)
+    @blog = Blog.find(params[:blog_id])
 
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to @comment, notice: 'Comment was successfully created.' }
+        format.html { redirect_to blog_comments_path, notice: 'Comment was successfully created.' }
         format.json { render :show, status: :created, location: @comment }
       else
         format.html { render :new }
@@ -41,9 +45,10 @@ class CommentsController < ApplicationController
   # PATCH/PUT /comments/1
   # PATCH/PUT /comments/1.json
   def update
+      @blog = Blog.find(params[:blog_id])
     respond_to do |format|
       if @comment.update(comment_params)
-        format.html { redirect_to @comment, notice: 'Comment was successfully updated.' }
+        format.html { redirect_to blog_comments_path, notice: 'Comment was successfully updated.' }
         format.json { render :show, status: :ok, location: @comment }
       else
         format.html { render :edit }
@@ -55,9 +60,10 @@ class CommentsController < ApplicationController
   # DELETE /comments/1
   # DELETE /comments/1.json
   def destroy
+      @blog = Blog.find(params[:blog_id])
     @comment.destroy
     respond_to do |format|
-      format.html { redirect_to comments_url, notice: 'Comment was successfully destroyed.' }
+      format.html { redirect_to blog_comments_url, notice: 'Comment was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
